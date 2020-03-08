@@ -19,7 +19,9 @@
     "react": "*",
     "react-dom": "*"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@sudoo/asynchronous": "^1.1.0"
+  },
   "devDependencies": {
     "@sudoo/io": "^1.7.0",
     "@sudoo/mock": "^1.3.0",
