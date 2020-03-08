@@ -1,0 +1,22 @@
+{
+    "cSpell.words": [
+        "Hoverable",
+        "RMRF",
+        "Triggerable",
+        "Unmount",
+        "WMXPY",
+        "antd",
+        "bwnl",
+        "clazz",
+        "codecov",
+        "docz",
+        "esnext",
+        "prebuilts",
+        "splited",
+        "sudoo",
+        "triforce",
+        "tshook"
+    ],
+    "tslint.configFile": "typescript/tslint.json",
+    "files.eol": "\n"
+}
