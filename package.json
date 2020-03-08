@@ -1,5 +1,5 @@
 {
-  "name": "@bwnl/download",
+  "name": "@bwnl/downloader",
   "version": "1.0.0",
   "description": ":wolf: Download file, package frontend",
   "directories": {
