@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@sudoo/asynchronous": "^1.1.0",
+    "@sudoo/magic": "^1.6.0",
     "file-saver": "^2.0.2",
     "jszip": "^3.2.2"
   },

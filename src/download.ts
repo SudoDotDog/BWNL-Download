@@ -5,39 +5,70 @@
  */
 
 import { Parallel, PromiseFunction } from "@sudoo/asynchronous";
+import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
 import * as FileSaver from "file-saver";
-import JSZip from "jszip";
+import * as JSZip from "jszip";
+import { FileConfig, FileRenameFunction, MAX_DOWNLOAD_THREAD } from "./declare";
 
-const HTTP_SUCCEED_CORE = 200;
-const MAX_DOWNLOAD_THREAD = 10;
+export class ZipFileDownloader {
 
-export const downloadImages = async (
-    images: Array<{
-        name: string,
-        url: string,
-    }>,
-    fileNameFunc: (originalName: string, index: number) => string,
-    zipName: string,
-): Promise<void> => {
+    public static create(threads: number = MAX_DOWNLOAD_THREAD) {
 
-    const zip: JSZip = new JSZip();
+        return new ZipFileDownloader(threads);
+    }
 
-    const list: Array<PromiseFunction<void>> = images.map((image, index: number) => {
+    private readonly _threads: number;
+    private readonly _files: FileConfig[];
 
-        return async () => {
-            const fileName: string = fileNameFunc(image.name, index);
-            const response: Response = await fetch(image.url);
-            if (response.status === HTTP_SUCCEED_CORE) {
-                const buffer: ArrayBuffer = await response.arrayBuffer();
-                zip.file(fileName, buffer);
-            }
-        };
-    });
+    private _fileRenameFunction?: FileRenameFunction;
 
-    await Parallel.create(MAX_DOWNLOAD_THREAD).execute(list);
+    private constructor(thread: number) {
 
-    const binary: Blob = await zip.generateAsync({ type: "blob" });
-    FileSaver.saveAs(binary, zipName);
+        this._threads = thread;
+        this._files = [];
+    }
 
-    return;
-};
+    public declareFileRenameFunction(fileRenameFunction: FileRenameFunction): this {
+
+        this._fileRenameFunction = fileRenameFunction;
+        return this;
+    }
+
+    public async download(zipName: string): Promise<void> {
+
+        const zip: JSZip = new JSZip();
+
+        const list: Array<PromiseFunction<void>> = this._getMappedDownloadFunctions(zip);
+        await Parallel.create(MAX_DOWNLOAD_THREAD).execute(list);
+
+        const binary: Blob = await zip.generateAsync({ type: "blob" });
+        FileSaver.saveAs(binary, zipName);
+
+        return;
+    }
+
+    private _getMappedDownloadFunctions(zip: JSZip): Array<PromiseFunction<void>> {
+
+        const list: Array<PromiseFunction<void>> = this._files.map((image, index: number) => {
+
+            return async () => {
+                const fileName: string = this._parseFileName(image.name, index);
+                const response: Response = await fetch(image.url);
+                if (response.status === HTTP_RESPONSE_CODE.OK) {
+                    const buffer: ArrayBuffer = await response.arrayBuffer();
+                    zip.file(fileName, buffer);
+                }
+            };
+        });
+        return list;
+    }
+
+    private _parseFileName(originalName: string, index: number): string {
+
+        if (this._fileRenameFunction) {
+            return this._fileRenameFunction(originalName, index);
+        }
+
+        return originalName;
+    }
+}
