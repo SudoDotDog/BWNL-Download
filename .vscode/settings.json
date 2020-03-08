@@ -11,6 +11,7 @@
         "codecov",
         "docz",
         "esnext",
+        "jszip",
         "prebuilts",
         "splited",
         "sudoo",
