@@ -19,6 +19,10 @@ build:
 	@echo "[INFO] Building for release"
 	@NODE_ENV=production $(tsc) --p $(tsconfig_build_path)
 
+ts-version:
+	@echo "[INFO] Getting TypeScript Version"
+	@NODE_ENV=development $(tsc) --version
+
 docz:
 	@echo "[INFO] Building docz"
 	@NODE_ENV=development $(docz) build
