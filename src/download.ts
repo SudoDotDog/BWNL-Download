@@ -18,7 +18,8 @@ export class ZipFileDownloader {
     }
 
     private readonly _threads: number;
-    private readonly _files: FileConfig[];
+
+    private _files: FileConfig[];
 
     private _fileRenameFunction?: FileRenameFunction;
 
@@ -34,12 +35,24 @@ export class ZipFileDownloader {
         return this;
     }
 
+    public add(file: FileConfig): this {
+
+        this._files.push(file);
+        return this;
+    }
+
+    public reset(): this {
+
+        this._files = [];
+        return this;
+    }
+
     public async download(zipName: string): Promise<void> {
 
         const zip: JSZip = new JSZip();
 
         const list: Array<PromiseFunction<void>> = this._getMappedDownloadFunctions(zip);
-        await Parallel.create(MAX_DOWNLOAD_THREAD).execute(list);
+        await Parallel.create(this._threads).execute(list);
 
         const binary: Blob = await zip.generateAsync({ type: "blob" });
         FileSaver.saveAs(binary, zipName);
