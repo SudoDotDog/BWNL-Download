@@ -12,7 +12,7 @@ import { FileConfig, FileRenameFunction, MAX_DOWNLOAD_THREAD } from "./declare";
 
 export class ZipFileDownloader {
 
-    public static create(threads: number = MAX_DOWNLOAD_THREAD) {
+    public static create(threads: number = MAX_DOWNLOAD_THREAD): ZipFileDownloader {
 
         return new ZipFileDownloader(threads);
     }
