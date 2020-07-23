@@ -4,7 +4,7 @@
  * @description Download
  */
 
-import { Parallel, PromiseFunction } from "@sudoo/asynchronous";
+import { ParallelPool, PromiseFunction } from "@sudoo/asynchronous";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
 import * as FileSaver from "file-saver";
 import * as JSZip from "jszip";
@@ -52,7 +52,7 @@ export class ZipFileDownloader {
         const zip: JSZip = new JSZip();
 
         const list: Array<PromiseFunction<void>> = this._getMappedDownloadFunctions(zip);
-        await Parallel.create(this._threads).execute(list);
+        await ParallelPool.create(this._threads).execute(list);
 
         const binary: Blob = await zip.generateAsync({ type: "blob" });
         FileSaver.saveAs(binary, zipName);
