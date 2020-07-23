@@ -7,16 +7,22 @@ tsc := node_modules/.bin/tsc
 ts_node := node_modules/.bin/ts-node
 mocha := node_modules/.bin/mocha
 eslint := node_modules/.bin/eslint
+start_storybook := node_modules/.bin/start-storybook
+build_storybook := node_modules/.bin/build-storybook
 
 main: dev
 
 dev:
-	@echo "[INFO] Building for development"
-	@NODE_ENV=development $(tsc) --p $(dev)
+	@echo "[INFO] Starting storybook server"
+	@NODE_ENV=development $(start_storybook)
 
 build:
 	@echo "[INFO] Building for production"
 	@NODE_ENV=production $(tsc) --p $(build)
+
+story:
+	@echo "[INFO] Building storybook"
+	@NODE_ENV=production $(build_storybook)
 
 tests:
 	@echo "[INFO] Testing with Mocha"

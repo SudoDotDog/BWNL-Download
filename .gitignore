@@ -21,6 +21,8 @@ coverage
 app
 .docz
 .DS_Store
+build
+storybook-static
 
 # lock
 yarn.lock

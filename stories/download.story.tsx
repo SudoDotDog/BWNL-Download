@@ -13,5 +13,5 @@ export default {
 
 export const Simple = () => {
 
-    return (<div></div>);
+    return (<div>Download</div>);
 };
