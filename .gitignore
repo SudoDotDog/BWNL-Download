@@ -19,10 +19,11 @@ coverage
 
 # Build
 app
-.docz
-.DS_Store
 build
 storybook-static
+
+# System
+.DS_Store
 
 # lock
 yarn.lock
