@@ -30,7 +30,7 @@
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-info": "^5.3.19",
     "@storybook/addon-knobs": "^5.3.19",
-    "@storybook/react": "^5.3.19",
+    "@storybook/react": "^6.0.0",
     "@sudoo/io": "^1.8.0",
     "@sudoo/mock": "^1.3.0",
     "@sudoo/react-force": "^1.7.3",
