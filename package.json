@@ -29,7 +29,7 @@
     "@babel/core": "^7.12.16",
     "@storybook/addon-actions": "^6.1.17",
     "@storybook/addon-info": "^5.3.21",
-    "@storybook/addon-knobs": "^6.1.17",
+    "@storybook/addon-knobs": "^6.1.18",
     "@storybook/react": "^6.1.17",
     "@sudoo/io": "^1.8.0",
     "@sudoo/mock": "^1.5.0",
