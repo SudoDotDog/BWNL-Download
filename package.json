@@ -27,10 +27,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.17",
-    "@storybook/addon-actions": "^6.1.18",
+    "@storybook/addon-actions": "^6.1.20",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-knobs": "^6.1.20",
-    "@storybook/react": "^6.1.18",
+    "@storybook/react": "^6.1.20",
     "@sudoo/io": "^1.8.0",
     "@sudoo/mock": "^1.5.0",
     "@sudoo/react-force": "^1.8.0",
@@ -42,7 +42,7 @@
     "react-docgen-typescript-loader": "^3.7.2",
     "ts-loader": "^8.0.17",
     "ts-node": "^9.1.1",
-    "typescript": "^4.1.5"
+    "typescript": "^4.2.2"
   },
   "nyc": {
     "extension": [
