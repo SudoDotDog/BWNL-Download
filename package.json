@@ -38,7 +38,7 @@
     "@sudoo/triforce": "^3.5.1",
     "@types/file-saver": "^2.0.5",
     "@types/jszip": "^3.4.1",
-    "babel-loader": "^8.2.3",
+    "babel-loader": "^8.2.4",
     "react-docgen-typescript-loader": "^3.7.2",
     "ts-loader": "^9.2.8",
     "ts-node": "^10.7.0",
