@@ -20,7 +20,7 @@
     "react-dom": "*"
   },
   "dependencies": {
-    "@sudoo/asynchronous": "^2.3.1",
+    "@sudoo/asynchronous": "^2.4.0",
     "@sudoo/magic": "^1.9.0",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1"
