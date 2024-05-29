@@ -1,27 +1,11 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  versioning-strategy: increase
-  ignore:
-  - dependency-name: ts-loader
-    versions:
-    - 9.1.0
-  - dependency-name: "@babel/core"
-    versions:
-    - 7.13.13
-    - 7.13.15
-  - dependency-name: "@storybook/addon-actions"
-    versions:
-    - 6.1.19
-    - 6.2.4
-  - dependency-name: "@storybook/react"
-    versions:
-    - 6.1.19
-    - 6.2.4
-  - dependency-name: "@storybook/addon-knobs"
-    versions:
-    - 6.1.19
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
+    ignore:
+      - dependency-name: "storybook"
+      - dependency-name: "@storybook/*"
