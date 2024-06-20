@@ -42,7 +42,7 @@
     "react-docgen-typescript-loader": "^3.7.2",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   },
   "nyc": {
     "extension": [
